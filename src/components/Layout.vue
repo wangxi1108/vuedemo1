@@ -116,13 +116,20 @@
     float: left;
   }
 
+  .app-content{
+    width: 1200px;
+    min-height: 600px;
+    margin: 0 auto;
+  }
+
+
   /*底部*/
   .app-footer{
     width: 100%;
     height: 50px;
     background-color: #ccc;
-    position: fixed;
-    bottom: 0;
+   /* position: fixed;
+    bottom: 0;*/
     line-height: 50px;
     text-align: center;
   }

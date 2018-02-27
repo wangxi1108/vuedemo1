@@ -29,7 +29,8 @@
         </div>
         <div class="col-md-10">
           <div class="index-right">
-fdgdgg
+          .
+
           </div>
         </div>
       </div>
@@ -129,6 +130,7 @@ fdgdgg
   dl{
     background-color: #fff;
     padding-left: 10px;
+    padding-bottom: 10px;
   }
   .hr{
     width: 100%;
