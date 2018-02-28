@@ -1,0 +1,5 @@
+
+npm安装的插件在main.js里import出来，可全局使用。
+
+插件：vue-resource：提供请求方式
+	json-server:模拟后台服务

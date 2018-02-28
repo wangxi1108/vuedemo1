@@ -35,8 +35,10 @@
 
 <style>
   html,body{
-    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    background-color: #e7e7e7;
   }
+  /*1.reset.css*/
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
@@ -80,6 +82,15 @@
     border-collapse: collapse;
     border-spacing: 0;
   }
+  /*2.通用的自定义样式*/
+  .ml20{
+    margin-left: 20px;
+  }
+  .mt20{
+    margin-top: 20px;
+  }
+
+
 
 
  body{

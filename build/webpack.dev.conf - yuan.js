@@ -9,21 +9,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
-const express = require('express')
-const app = express()
-const apiRoutes = express.Router()
-app.use('/api', apiRoutes)
-
-
-//用json-server启服务
-
-
-
-
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
-
-
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -54,9 +41,6 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
       poll: config.dev.poll,
-    },
-    before(){
-
     }
   },
   plugins: [
@@ -82,9 +66,6 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     ])
   ]
 })
-
-
-
 
 module.exports = new Promise((resolve, reject) => {
   portfinder.basePort = process.env.PORT || config.dev.port

@@ -10,8 +10,11 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "express": "^4.16.2",
     "jquery": "^3.3.1",
+    "json-server": "^0.12.1",
     "vue": "^2.5.2",
+    "vue-resource": "^1.4.0",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
