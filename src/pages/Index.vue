@@ -55,7 +55,7 @@
     export default {
         name: "index",
       created:function () {
-        this.$http.get('getList').then(function (data) {
+        this.$http.get('http://localhost:8080/api/goods').then(function (data) {
           console.log(data);
         },function (err) {
           console.log(err);
