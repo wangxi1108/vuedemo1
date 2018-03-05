@@ -16,7 +16,7 @@ const app = express()
 /*const appData = require('../db.json')
 const goodNewsList = appData.getNewsList*/
 
-const apiRoutes = express.Router()
+var apiRoutes = express.Router()
 app.use('/api', apiRoutes)
 
 
@@ -60,7 +60,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     watchOptions: {
       poll: config.dev.poll,
     },
-    before(){
+    before(app){
       app.get('/api/goods', (req, res) => {
         res.json(
           {
@@ -81,7 +81,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         )//接口返回json数据，上面配置的数据seller就赋值给data请求后调用
       })
     }
-  },
+
+    },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': require('../config/dev.env')
