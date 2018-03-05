@@ -21,7 +21,7 @@
               <dl class="newDl">
                 <dt></dt>
                 <dd v-for="itm in newsList">
-                  <a :href="itm.url">{{itm.name}}</a>
+                  <a :href="itm.url" class="new-item">{{itm.title}}</a>
                 </dd>
               </dl>
             </div>
@@ -55,34 +55,19 @@
     export default {
         name: "index",
       created:function () {
-        this.$http.get('/api/goodNewslist').then(function (data) {
-          console.log(data);
-        },function (err) {
+          //问题1：post请求数据中没有id会报错？？？？
+        this.$http.get('/api/getNewsList')
+          .then((res) => {
+            //console.log(res.data);
+          this.newsList = res.data //把请求到的数据给newsList
+        },(err) => {
           console.log(err);
 
         })
       },
       data(){
           return {
-            newsList:[
-              {
-                name: '数据统计1',
-                url: 'http://starcraft.com'
-              },
-              {
-                name: '数据预测2',
-                url: 'http://warcraft.com',
-                hot:true
-              },
-              {
-                name: '流量分析3',
-                url: 'http://overwatch.com'
-              },
-              {
-                name: '广告发布4',
-                url: 'http://hearstone.com'
-              }
-            ],
+            newsList:[],
             productList: {
               pc: {
                 title: 'PC产品',
@@ -197,6 +182,14 @@
     display: inline-block;
     border-radius: 3px;
   }
+  .new-item{
+    display: inline-block;
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
   dl dt{
     font-weight: bold;
     padding: 14px 0;

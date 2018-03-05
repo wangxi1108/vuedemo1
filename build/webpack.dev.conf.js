@@ -100,7 +100,9 @@ const apiRouter = jsonServer.router('db.json')
 const middlewares = jsonServer.defaults()
 
 apiServer.use(middlewares)
-apiServer.use(apiRouter)
+// apiServer.use(apiRouter)
+apiServer.use('/api',apiRouter) //写成代理的形式
+
 apiServer.listen(config.dev.port+1, () => {
   console.log('JSON Server is running')
 })
