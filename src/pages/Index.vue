@@ -29,7 +29,7 @@
         </div>
         <div class="col-md-10">
           <div class="index-right">
-
+            <slide-show></slide-show>
             <div class="board-list">
               <div class="board-item" v-for="(item,index) in boardList" :class="{'ml20' : index % 2}">
                 <img src="/static/imgs/images/1.png" alt="">
@@ -52,8 +52,13 @@
 </template>
 
 <script>
+  import slideShow from '@/components/SlideShow'
+
     export default {
-        name: "index",
+      name: "index",
+      components:{
+          slideShow
+      },
       created:function () {
           //问题1：post请求数据中没有id会报错？？？？
         this.$http.get('/api/getNewsList')
