@@ -13,8 +13,8 @@ const portfinder = require('portfinder')
 const express = require('express')
 const app = express()
 
-/*const appData = require('../db.json')
-const goodNewsList = appData.getNewsList*/
+var appData = require('../db.json')
+var goodNewslist = appData.getNewsList
 
 var apiRoutes = express.Router()
 app.use('/api', apiRoutes)
@@ -61,24 +61,12 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       poll: config.dev.poll,
     },
     before(app){
-      app.get('/api/goods', (req, res) => {
-        res.json(
-          {
-            "title":"珠宝首饰",
-            "lei":["黄金首饰","钟表","眼镜" ],
-            "aa":[
-              {"img":"/static/img1/1499400139048_2.jpg","id":"201"},
-              {"img":"/static/img1/1499400139048_2.jpg","id":"202"},
-              {"img":"/static/img1/1499400139048_2.jpg","id":"203"},
-              {"img":"/static/img1/1499400139048_2.jpg","id":"204"},
-              {"img":"/static/img1/1499400139048_2.jpg","id":"205"},
-              {"img":"/static/img1/1499400139048_2.jpg","id":"206"},
-              {"img":"/static/img1/1499400139048_2.jpg","id":"207"},
-              {"img":"/static/img1/1499400139048_2.jpg","id":"208"}
+      app.get('/api/goodNewslist', (req, res) => {
+        res.json({
+          errno:0,
+          data:goodNewslist
 
-            ]
-          }
-        )//接口返回json数据，上面配置的数据seller就赋值给data请求后调用
+        })//接口返回json数据，上面配置的数据seller就赋值给data请求后调用
       })
     }
 
