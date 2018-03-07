@@ -5,7 +5,7 @@
         <div class="col-md-2">
           <div class="index-left">
             <div class="left-com">
-              <h3>全部产品</h3>
+              <h3 @click="wai()">全部产品</h3>
               <template v-for="product in productList">
                 <!--一层一层循环下去-->
                 <dl>
@@ -29,7 +29,9 @@
         </div>
         <div class="col-md-10">
           <div class="index-right">
-            <slide-show></slide-show>
+            <!--轮播组件-->
+            <slide-show :slides="slides"></slide-show>
+
             <div class="board-list">
               <div class="board-item" v-for="(item,index) in boardList" :class="{'ml20' : index % 2}">
                 <img src="/static/imgs/images/1.png" alt="">
@@ -72,6 +74,29 @@
       },
       data(){
           return {
+            invTime:3000,
+            slides:[
+              {
+                src:require('../../static/imgs/slideShow/pic1.jpg'),
+                title:'pic1',
+                href:'http://www.baidu.com'
+              },
+              {
+                src:require('../../static/imgs/slideShow/pic2.jpg'),
+                title:'pic2',
+                href:'http://www.baidu.com'
+              },
+              {
+                src:require('../../static/imgs/slideShow/pic3.jpg'),
+                title:'pic3',
+                href:'http://www.baidu.com'
+              },
+              {
+                src:require('../../static/imgs/slideShow/pic4.jpg'),
+                title:'pic4',
+                href:'http://www.baidu.com'
+              }
+            ],
             newsList:[],
             productList: {
               pc: {
@@ -151,8 +176,22 @@
               }
             ],
           }
+        },
+      methods:{
+        //自己测写1：
+        wai(){    // /api/services/app/yunTrackPc/GetYunTrackList
+          this.$http.get('')
+            .then((res) => {
+              console.log(res.data);
+            },(err) => {
+              console.log(err);
+
+            })
         }
-    }
+      }
+
+
+  }
 </script>
 
 <style scoped>
@@ -204,7 +243,10 @@
   }
 
   .index-right{
+    /*width: 880px;*/
     padding-left: 20px;
+    min-height: 500px;
+    overflow: hidden;
   }
   .board-list{
     width: 100%;

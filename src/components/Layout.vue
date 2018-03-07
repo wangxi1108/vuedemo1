@@ -93,8 +93,11 @@
 
 
 
- body{
+body{
    background-color: #e7e7e7;
+   width: 100%;
+   height: 100%;
+   position: relative;
  }
 .app-header{
   width: 100%;
@@ -129,20 +132,24 @@
 
   .app-content{
     width: 1200px;
-    min-height: 600px;
+    min-height: 900px;
     margin: 0 auto;
+    overflow: hidden;
   }
 
 
   /*底部*/
   .app-footer{
+    margin-top: 30px;
     width: 100%;
-    height: 50px;
+    min-height: 50px;
+    overflow: hidden;
     background-color: #ccc;
-   /* position: fixed;
-    bottom: 0;*/
     line-height: 50px;
     text-align: center;
+    position: absolute;
+    left: 0;
+    bottom: 0;
   }
 
 
