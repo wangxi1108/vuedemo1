@@ -84,17 +84,17 @@
               {
                 src:require('../../static/imgs/slideShow/pic2.jpg'),
                 title:'pic2',
-                href:'http://www.baidu.com'
+                href:'http://www.baidu.com2'
               },
               {
                 src:require('../../static/imgs/slideShow/pic3.jpg'),
                 title:'pic3',
-                href:'http://www.baidu.com'
+                href:'http://www.baidu.com3'
               },
               {
                 src:require('../../static/imgs/slideShow/pic4.jpg'),
                 title:'pic4',
-                href:'http://www.baidu.com'
+                href:'http://www.baidu.com4'
               }
             ],
             newsList:[],
