@@ -1,0 +1,16 @@
+
+git stash 保存本地代码
+git pull 拉取
+git stash pop 展示冲突代码
+
+git status
+git add .
+git commit -m ""
+git push
+
+
+按下   :wq  退出insert模式
+
+
+
+
