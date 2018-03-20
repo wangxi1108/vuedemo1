@@ -30,7 +30,7 @@
         <div class="col-md-10">
           <div class="index-right">
             <!--轮播组件-->
-            <slide-show :slides="slides"></slide-show>
+            <slide-show :slides="slides" :invTime="slideTime" @onChange="ziTofu"></slide-show>
 
             <div class="board-list">
               <div class="board-item" v-for="(item,index) in boardList" :class="{'ml20' : index % 2}">
@@ -74,7 +74,7 @@
       },
       data(){
           return {
-            invTime:3000,
+            slideTime:3000,
             slides:[
               {
                 src:require('../../static/imgs/slideShow/pic1.jpg'),
@@ -187,6 +187,10 @@
               console.log(err);
 
             })
+        },
+        ziTofu(index){
+          //此index为子组件传过来的参数对象。{param:2}
+          // console.log("自组件slide的index发生变化，父组件响应就打印一次。",index);
         }
       }
 

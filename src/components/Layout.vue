@@ -5,11 +5,11 @@
         <img class="logo" src="static/imgs/logo1.jpg" alt="">
         <div class="head-nav">
           <ul>
-            <li>登录</li>
+            <li @click="showLogin">登录</li>
             <li class="shu">|</li>
-            <li>注册</li>
+            <li @click="showRegist">注册</li>
             <li class="shu">|</li>
-            <li>关于</li>
+            <li @click="showAbouteDialog">关于</li>
           </ul>
         </div>
       </div>
@@ -20,16 +20,52 @@
         <router-view></router-view>
       </keep-alive>
     </div>
-
     <div class="app-footer">
-        <span>2018-vueproject-stand</span>
+        <span>2018-vue-project-stand</span>
     </div>
+    <vue-dialog :show="showDialog" @closeDialog="noShow('showDialog')">
+      <p>ppp
+        <span>
+          就放在了插槽里了
+        </span>
+      </p>
+    </vue-dialog>
+    <vue-dialog :show="showLoginDialog" @closeDialog="noShow('showLoginDialog')">
+      <p>登录dialog</p>
+    </vue-dialog>
+    <vue-dialog :show="showRegisterDialog" @closeDialog="noShow('showRegisterDialog')">
+      <p>注册dialog</p>
+    </vue-dialog>
   </div>
 </template>
 
 <script>
+  import ComDialog from '@/components/ComDialog'
     export default {
-        name: "layout"
+      name: "layout",
+      components:{vueDialog:ComDialog},
+      data(){
+          return {
+            //记-1：父组件中有子组件时，状态都是由父组件中定义变量来控制。子组件是通过$emit来通过函数来改变变量状态。
+            showDialog:false,
+            showLoginDialog:false,
+            showRegisterDialog:false
+          }
+      },
+      methods:{
+        showAbouteDialog(){
+          this.showDialog = true;
+        },
+        showLogin(){
+          this.showLoginDialog = true;
+        },
+        showRegist(){
+          this.showRegisterDialog = true;
+        },
+        noShow(aa){
+          this[aa] = false;
+        }
+      }
     }
 </script>
 
