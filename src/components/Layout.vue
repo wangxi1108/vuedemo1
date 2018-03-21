@@ -23,6 +23,7 @@
     <div class="app-footer">
         <span>2018-vue-project-stand</span>
     </div>
+    <!--顶部弹窗-->
     <vue-dialog :show="showDialog" @closeDialog="noShow('showDialog')">
       <p>ppp
         <span>
@@ -31,7 +32,7 @@
       </p>
     </vue-dialog>
     <vue-dialog :show="showLoginDialog" @closeDialog="noShow('showLoginDialog')">
-      <p>登录dialog</p>
+      <login-form></login-form>
     </vue-dialog>
     <vue-dialog :show="showRegisterDialog" @closeDialog="noShow('showRegisterDialog')">
       <p>注册dialog</p>
@@ -41,9 +42,10 @@
 
 <script>
   import ComDialog from '@/components/ComDialog'
+  import LoginForm from '@/components/LoginForm'
     export default {
       name: "layout",
-      components:{vueDialog:ComDialog},
+      components:{vueDialog:ComDialog,LoginForm},
       data(){
           return {
             //记-1：父组件中有子组件时，状态都是由父组件中定义变量来控制。子组件是通过$emit来通过函数来改变变量状态。

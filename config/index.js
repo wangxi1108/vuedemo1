@@ -11,7 +11,7 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/api/':'http://localhost:8081/' //api就代表8081端口了
+      '/api/':'http://localhost:8080/' //api就代表8081端口了
     },
 
     // Various Dev Server settings
