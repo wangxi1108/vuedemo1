@@ -2,7 +2,7 @@
     <div class="login-form">
       <form action="">
         <div class="form-line">
-          <label for="">用户名：</label>
+          <label>用户名：</label>
           <div class="input-box">
             <input type="text" v-model="userName" placeholder="输入用户名">
             <!--userError是函数-->
@@ -10,7 +10,7 @@
           </div>
         </div>
         <div class="form-line">
-          <label for="">密码：</label>
+          <label>密码：</label>
           <div class="input-box">
             <input type="password" v-model="password" placeholder="输入密码">
             <span class="notice">{{passwordError.errorText}}</span>
@@ -20,6 +20,7 @@
           <label for=""></label>
           <div class="form-btn">
             <a class="login-btn" @click="loginBtn">登录</a>
+            <span class="notice">{{loginError}}</span>
           </div>
         </div>
       </form>
@@ -29,6 +30,13 @@
 <script>
     export default {
         name: "login-form",
+      data(){
+          return{
+            userName:'',
+            password:'',
+            loginError:''
+          }
+      },
       computed:{
         userError(){ //输入的正则判断
           let errorText,errorStatus;
@@ -61,8 +69,6 @@
             this.passwordFlag = true;
           }
 
-
-
           return {
             errorText,
             errorStatus
@@ -70,20 +76,25 @@
         }
 
       },
-      data(){
-          return{
-            userName:'',
-            password:''
-          }
-      },
       methods:{
         loginBtn(){
-          if(this.userError.errorStatus || this.password.errorStatus){
-            console.log("Ok")
+
+          if(this.userError.errorStatus && this.passwordError.errorStatus){
+
+            this.loginError = '';
+            this.$http.get('/api/login')
+              .then((res)=>{
+                //模拟登陆成功直接返回信息
+                this.$emit('on-login',res.data);
+
+              },(error)=>{
+                console.log(error)
+              })
+
           }else{
-            alert("输入格式不对")
+            this.loginError = "输入格式不对"
           }
-          console.log(this.userName,this.password);
+          // console.log(this.userName,this.password);
         }
       }
     }

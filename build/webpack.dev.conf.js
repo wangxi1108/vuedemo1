@@ -16,6 +16,7 @@ const app = express()
 
 const appData = require('../db.json') //获取数据文件
 const goodNewslist = appData.getNewsList //文件里面的对象内容
+const userMsg  = appData.login
 const apiRoutes = express.Router()
 app.use('/api', apiRoutes)
 
@@ -61,7 +62,12 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         res.json({
           errno:0,
           data:goodNewslist
-
+        })//接口返回json数据，上面配置的数据seller就赋值给data请求后调用
+      })
+      app.get('/api/login', (req, res) => {
+        res.json({
+          errno:0,
+          data:userMsg
         })//接口返回json数据，上面配置的数据seller就赋值给data请求后调用
       })
     }

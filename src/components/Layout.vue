@@ -5,9 +5,13 @@
         <img class="logo" src="static/imgs/logo1.jpg" alt="">
         <div class="head-nav">
           <ul>
-            <li @click="showLogin">登录</li>
+            <li v-if="userName == ''" @click="showLogin">登录</li>
+            <li v-else class="user">{{userName}}</li>
+
             <li class="shu">|</li>
-            <li @click="showRegist">注册</li>
+            <li v-if="userName == ''" @click="showRegist">注册</li>
+            <li v-else @click="showRegist">退出</li>
+
             <li class="shu">|</li>
             <li @click="showAbouteDialog">关于</li>
           </ul>
@@ -32,7 +36,7 @@
       </p>
     </vue-dialog>
     <vue-dialog :show="showLoginDialog" @closeDialog="noShow('showLoginDialog')">
-      <login-form></login-form>
+      <login-form @on-login="successLogin"></login-form>
     </vue-dialog>
     <vue-dialog :show="showRegisterDialog" @closeDialog="noShow('showRegisterDialog')">
       <p>注册dialog</p>
@@ -51,7 +55,8 @@
             //记-1：父组件中有子组件时，状态都是由父组件中定义变量来控制。子组件是通过$emit来通过函数来改变变量状态。
             showDialog:false,
             showLoginDialog:false,
-            showRegisterDialog:false
+            showRegisterDialog:false,
+            userName:''
           }
       },
       methods:{
@@ -66,6 +71,10 @@
         },
         noShow(aa){
           this[aa] = false;
+        },
+        successLogin(data){
+          this.noShow('showLoginDialog');//登录成功关闭此弹窗组件
+          this.userName = data.data.userName;
         }
       }
     }
@@ -167,7 +176,9 @@ body{
   .head-nav ul li{
     float: left;
   }
-
+  .user{
+    color: red;
+  }
   .app-content{
     width: 1200px;
     min-height: 900px;
