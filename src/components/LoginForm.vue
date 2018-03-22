@@ -55,6 +55,14 @@
             errorText = '';
             errorStatus = true
           }
+          if(!this.passwordFlag){ //为了控制初始不报输入错误的提示。
+            // passwordFlag不用定义，第一次就为undefined,整体为true。
+            errorText = '';
+            this.passwordFlag = true;
+          }
+
+
+
           return {
             errorText,
             errorStatus

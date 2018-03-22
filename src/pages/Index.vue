@@ -63,10 +63,14 @@
       },
       created:function () {
           //问题1：post请求数据中没有id会报错？？？？
-        this.$http.get('/api/getNewsList')
+
+
+        //注意路径是配置好的。而不是内容里面的。
+        this.$http.get('/api/goodNewslist')
           .then((res) => {
-            //console.log(res.data);
-          this.newsList = res.data //把请求到的数据给newsList
+            console.log(11111);
+            console.log(res.data);
+          this.newsList = res.data.data //把请求到的数据给newsList
         },(err) => {
           console.log(err);
 

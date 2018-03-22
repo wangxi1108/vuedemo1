@@ -11,21 +11,19 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 
 const express = require('express')
+const app = express()
 // var jsonServer = require('json-server') //使用json-server
 
-
-
-/*const appData = require('../db.json') //获取数据文件
+const appData = require('../db.json') //获取数据文件
 const goodNewslist = appData.getNewsList //文件里面的对象内容
 const apiRoutes = express.Router()
-app.use('/api', apiRoutes)*/
+app.use('/api', apiRoutes)
 
 //用json-server启服务
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
-const app = express()
 // var jsonServer = new jsonServer()
 
 const devWebpackConfig = merge(baseWebpackConfig, {
@@ -57,8 +55,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
       poll: config.dev.poll,
-    }
-    /*before(app){ //定义后台接口，参数app不能少，注意接口定义的名字要相同
+    },
+    before(app){ //定义后台接口，参数app不能少，注意接口定义的名字要相同
       app.get('/api/goodNewslist', (req, res) => {
         res.json({
           errno:0,
@@ -66,9 +64,9 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 
         })//接口返回json数据，上面配置的数据seller就赋值给data请求后调用
       })
-    }*/
+    }
 
-    },
+  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': require('../config/dev.env')
@@ -124,8 +122,8 @@ module.exports = new Promise((resolve, reject) => {
           messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${port}`],
         },
         onErrors: config.dev.notifyOnErrors
-        ? utils.createNotifierCallback()
-        : undefined
+          ? utils.createNotifierCallback()
+          : undefined
       }))
 
       resolve(devWebpackConfig)
