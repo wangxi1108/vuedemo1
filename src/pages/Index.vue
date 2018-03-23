@@ -34,7 +34,7 @@
 
             <div class="board-list">
               <div class="board-item" v-for="(item,index) in boardList" :class="{'ml20' : index % 2}">
-                <img src="/static/imgs/images/1.png" alt="">
+                <img :src="item.src" alt="">
                 <div class="item-right">
                   <h4>{{item.title}}</h4>
                   <p>{{item.description}}</p>
@@ -154,28 +154,32 @@
                 description: '开放产品是一款开放产品',
                 id: 'car',
                 toKey: 'analysis',
-                saleout: false
+                saleout: false,
+                src:require('../../static/imgs/images/1.png')
               },
               {
                 title: '品牌营销',
                 description: '品牌营销帮助你的产品更好地找到定位',
                 id: 'earth',
                 toKey: 'count',
-                saleout: false
+                saleout: false,
+                src:require('../../static/imgs/images/2.png')
               },
               {
                 title: '使命必达',
                 description: '使命必达快速迭代永远保持最前端的速度',
                 id: 'loud',
                 toKey: 'forecast',
-                saleout: true
+                saleout: true,
+                src:require('../../static/imgs/images/3.png')
               },
               {
                 title: '勇攀高峰',
                 description: '帮你勇闯高峰，到达事业的顶峰',
                 id: 'hill',
                 toKey: 'publish',
-                saleout: false
+                saleout: false,
+                src:require('../../static/imgs/images/4.png')
               }
             ],
           }

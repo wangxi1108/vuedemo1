@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 
 //安装的插件在main.js里引入。包括npm安装的模块。再vue.use()用。并把次插件注入到了全局。
+//此时入口文件！
 
 import Vue from 'vue'
 import App from './App'

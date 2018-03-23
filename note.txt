@@ -1,7 +1,9 @@
 
-npm°²×°µÄ²å¼þÔÚmain.jsÀïimport³öÀ´£¬¿ÉÈ«¾ÖÊ¹ÓÃ¡£
+npmï¿½ï¿½×°ï¿½Ä²ï¿½ï¿½ï¿½ï¿½main.jsï¿½ï¿½importï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½Ê¹ï¿½Ã¡ï¿½
 
-²å¼þ£ºvue-resource£ºÌá¹©ÇëÇó·½Ê½
-	json-server:Ä£ÄâºóÌ¨·þÎñ
+ï¿½ï¿½ï¿½ï¿½ï¿½vue-resourceï¿½ï¿½ï¿½á¹©ï¿½ï¿½ï¿½ï¿½Ê½
+	json-server:Ä£ï¿½ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½ï¿½
 
-´úÀí·þÎñ£ºÔÚconfig¼ÐµÄindex.jsÀïÃæ proxyTable{} ÅäÖÃ¡£
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½configï¿½Ðµï¿½index.jsï¿½ï¿½ï¿½ï¿½ proxyTable{} ï¿½ï¿½ï¿½Ã¡ï¿½
+
+main.jsæ˜¯å…¥å£æ–‡ä»¶
