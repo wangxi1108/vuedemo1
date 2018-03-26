@@ -2,7 +2,9 @@
   <div id="layout">
     <div class="app-header">
       <div class="head-content">
-        <img class="logo" src="static/imgs/logo1.jpg" alt="">
+        <router-link :to="{path:'/'}">
+          <img class="logo" src="static/imgs/logo1.jpg" alt="">
+        </router-link>
         <div class="head-nav">
           <ul>
             <li v-if="userName == ''" @click="showLogin">登录</li>

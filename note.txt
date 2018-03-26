@@ -1,4 +1,4 @@
-
+﻿
 npm��װ�Ĳ����main.js��import��������ȫ��ʹ�á�
 
 �����vue-resource���ṩ����ʽ
@@ -7,3 +7,17 @@ npm��װ�Ĳ����main.js��import��������ȫ���
 ���������config�е�index.js���� proxyTable{} ���á�
 
 main.js是入口文件
+
+直接访问子页面
+：注意--是根据index.js里面配置路由写的，而不是直接根据文件夹的路径！
+http://localhost:8080/#/detail    //详情大页面
+http://localhost:8080/#/detail/Advertising  //详情大页面子路由里面的小页面
+
+
+
+
+<router-link></router-link>里面的tag。
+图片路径 require("../../../static/imgs/images/1.png")，在data中 用require写，打包时才能被找到并放进去。
+noShow(aa){
+          this[aa] = false; //经常用 [ ]来。。。
+        }

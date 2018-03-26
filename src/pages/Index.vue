@@ -39,8 +39,11 @@
                   <h4>{{item.title}}</h4>
                   <p>{{item.description}}</p>
                   <div class="btn-box">
-                    <!--<router-link></router-link>-->
-                    <a href="" class="btn btn-info btn-sm" role="button">立即购买</a>
+                    <!--<a href="" class="btn btn-info btn-sm" role="button">立即购买</a>-->
+                    <!--也可以把路径写在属性里，href等于它。-->
+                    <router-link class="btn btn-info btn-sm" :to="{path:'/detail/'+item.toKey}">
+                      立即购买
+                    </router-link>
                   </div>
                 </div>
               </div>
@@ -153,7 +156,7 @@
                 title: '开放产品',
                 description: '开放产品是一款开放产品',
                 id: 'car',
-                toKey: 'analysis',
+                toKey: 'DataStatistics', //路由的位置！
                 saleout: false,
                 src:require('../../static/imgs/images/1.png')
               },
@@ -161,7 +164,7 @@
                 title: '品牌营销',
                 description: '品牌营销帮助你的产品更好地找到定位',
                 id: 'earth',
-                toKey: 'count',
+                toKey: 'DataYuCe',
                 saleout: false,
                 src:require('../../static/imgs/images/2.png')
               },
@@ -169,7 +172,7 @@
                 title: '使命必达',
                 description: '使命必达快速迭代永远保持最前端的速度',
                 id: 'loud',
-                toKey: 'forecast',
+                toKey: 'Analysis',
                 saleout: true,
                 src:require('../../static/imgs/images/3.png')
               },
@@ -177,7 +180,7 @@
                 title: '勇攀高峰',
                 description: '帮你勇闯高峰，到达事业的顶峰',
                 id: 'hill',
-                toKey: 'publish',
+                toKey: 'Advertising',
                 saleout: false,
                 src:require('../../static/imgs/images/4.png')
               }
