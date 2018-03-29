@@ -2,7 +2,7 @@
   <div class="counter-component">
     <div class="counter-btn" @click="minus"> - </div>
     <div class="counter-show">
-      <input type="text" v-model.number = "number" @keyup="restNumber">
+      <input type="text" v-model = "number" @keyup="restNumber">
     </div>
     <div class="counter-btn" @click="add"> + </div>
   </div>
@@ -41,7 +41,20 @@ export default {
     //输入数字处理
     restNumber(){
       let fix;
-      this.number = this.number.replace(/\D/g,'')
+      if(typeof this.number === "string"){ //这个重要，否则会报错
+        fix = this.number.replace(/\D/g, '');
+      }
+
+      if(this.number > this.max || this.number < this.min){
+        fix = this.min
+      }
+        this.number = fix;
+
+    }
+  },
+  watch:{
+    number(){
+      this.$emit('on-change',this.number);
     }
   }
 }

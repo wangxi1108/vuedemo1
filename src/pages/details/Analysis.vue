@@ -16,9 +16,11 @@
             <option value="" disabled>请选择</option>
             <option v-for="option in buyType" :value="option.value">{{option.text}}</option>
           </select>
-          {{buyTypeSelect}}
         </li>
-        <li><span class="li-span">有效时间：</span> <span>半年</span></li>
+        <li>
+          <span class="li-span">有效时间：</span>
+          <v-choose :time="rangeTime" @on-change="chooseTime"></v-choose>
+        </li>
         <li><span class="li-span">总价：</span><span>500元</span></li>
         <li><span class="li-span"></span>
           <a class="buy-btn"> 立即购买</a>
@@ -41,10 +43,11 @@
 
 <script>
   import vCounter from '@/components/carBase/counter'
+  import vChoose from '@/components/carBase/choose'
 
     export default {
       name: "analysis",
-      components: {vCounter},
+      components: {vCounter,vChoose},
       data() {
         return {
           buyType: [
@@ -52,7 +55,12 @@
             {text: '中级版', value: 1},
             {text: '高级版', value: 2}
           ],
-          buyTypeSelect: ''
+          buyTypeSelect: '',
+          rangeTime:[
+            {text:'半年',val:0},
+            {text:'1年',val:1},
+            {text:'2年',val:2}
+          ]
         }
       },
       computed: {
@@ -63,8 +71,11 @@
       },
       methods: {
         select() {
-          console.log(222, this.buyTypeSelect);
+          // console.log(222, this.buyTypeSelect);
           console.log(this.selects);
+        },
+        chooseTime(val){
+          console.log(1122,val);
         }
       },
       mounted(){
