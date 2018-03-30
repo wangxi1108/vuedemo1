@@ -49,5 +49,6 @@
     background: mediumseagreen;
     color: #fff;
     border: none;
+    border: 1px solid mediumseagreen;
   }
 </style>

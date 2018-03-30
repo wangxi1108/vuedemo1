@@ -18,6 +18,10 @@
           </select>
         </li>
         <li>
+          <span class="li-span">产品版本：</span>
+          <v-choose-more :typeData="useType"></v-choose-more>
+        </li>
+        <li>
           <span class="li-span">有效时间：</span>
           <v-choose :time="rangeTime" @on-change="chooseTime"></v-choose>
         </li>
@@ -44,10 +48,11 @@
 <script>
   import vCounter from '@/components/carBase/counter'
   import vChoose from '@/components/carBase/choose'
+  import vChooseMore from '@/components/carBase/chooseMore'
 
     export default {
       name: "analysis",
-      components: {vCounter,vChoose},
+      components: {vCounter,vChoose,vChooseMore},
       data() {
         return {
           buyType: [
@@ -60,6 +65,12 @@
             {text:'半年',val:0},
             {text:'1年',val:1},
             {text:'2年',val:2}
+          ],
+          useType:[
+            {text:'客户版',val:0},
+            {text:'代理版',val:1},
+            {text:'专业版',val:2},
+            {text:'其他版',val:3}
           ]
         }
       },
