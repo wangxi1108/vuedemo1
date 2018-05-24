@@ -3,7 +3,7 @@
       <ul>
         <li class="choose-li" v-for="(itm,idx) in typeData"
         @click="chooseMore(idx)"
-        :class="{active:checkActive(idx)}">
+        :class="{active:checkActive(idx)}" :key="idx">
           {{itm.text}}
         </li>
       </ul>
@@ -25,6 +25,7 @@
           }
       },
       methods:{
+        // 可多选，根据数组内有无该选中的index来判断
         chooseMore(index){
           let nowChoosedArray;
           if(this.nowChooseIndex.indexOf(index) === -1){
@@ -34,20 +35,18 @@
               return n !== index
             })
           }
-
           nowChoosedArray = _.map(this.nowChooseIndex,(idx)=>{
-            return this.typeData[idx]
+            // 可直接把文字传过去。也可以把对象传过去，父组件再处理要得值。
+            return this.typeData[idx].text
           })
-
-          console.log(nowChoosedArray);
+          this.$emit('on-change',nowChoosedArray);
+          // console.log(nowChoosedArray);
         },
         checkActive(index){
           return this.nowChooseIndex.indexOf(index) !== -1
         }
       }
-
     }
-
 </script>
 
 <style scoped>

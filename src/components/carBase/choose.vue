@@ -2,8 +2,8 @@
     <div class="choose">
       <ul>
         <li v-for="(item,index) in time" class="choose-li" :data="item.val"
-        @click="chooseNow(index,item.val)"
-        :class="{active:index === nowIndex}">{{item.text}}</li>
+        @click="chooseNow(index,item.text)"
+        :class="{active:index === nowIndex}" :key="index">{{item.text}}</li>
       </ul>
     </div>
 </template>

@@ -10,17 +10,17 @@
                 <!--一层一层循环下去-->
                 <dl>
                   <dt>{{product.title}}</dt>
-                  <dd v-for="item in product.list">
+                  <dd v-for="(item,index) in product.list" :key="index">
                     <a :href="item.url">{{item.name}}</a><span class="hot" v-if="item.hot">Hot</span>
                   </dd>
                 </dl>
-                <div class="hr" v-if="!product.last"></div>
+                <div class="hr" v-show="!product.last"></div>
               </template>
 
               <h3 class="mt20">最新消息</h3>
               <dl class="newDl">
                 <dt></dt>
-                <dd v-for="itm in newsList">
+                <dd v-for="(itm,idx) in newsList" :key="idx">
                   <a :href="itm.url" class="new-item">{{itm.title}}</a>
                 </dd>
               </dl>
@@ -33,7 +33,7 @@
             <slide-show :slides="slides" :invTime="slideTime" @onChange="ziTofu"></slide-show>
 
             <div class="board-list">
-              <div class="board-item" v-for="(item,index) in boardList" :class="{'ml20' : index % 2}">
+              <div class="board-item" v-for="(item,index) in boardList" :class="{'ml20' : index % 2}" :key="index">
                 <img :src="item.src" alt="">
                 <div class="item-right">
                   <h4>{{item.title}}</h4>
@@ -64,14 +64,15 @@
       components:{
           slideShow
       },
-      created:function () {
+      created() {
           //问题1：post请求数据中没有id会报错？？？？
 
 
         //注意路径是配置好的。而不是内容里面的。
+        //路径写在 ：  webpack.dev.conf.js 文件里面。
         this.$http.get('/api/goodNewslist')
           .then((res) => {
-            // console.log(res.data);
+            // console.log(111,res.data);
           this.newsList = res.data.data //把请求到的数据给newsList
         },(err) => {
           console.log(err);

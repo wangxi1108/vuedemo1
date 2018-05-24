@@ -8,24 +8,24 @@
       <ul class="buy-details">
         <li>
           <span class="li-span">购买数量：</span>
-          <v-counter></v-counter>
+          <v-counter @on-change="selectParams('buyNum',$event)"></v-counter>{{buyNum}}
         </li>
         <li>
           <span class="li-span">产品类型：</span>
-          <select v-model="buyTypeSelect" @on-change="select()">
+          <select v-model="buyTypeSelect" @change="getPrice">
             <option value="" disabled>请选择</option>
-            <option v-for="option in buyType" :value="option.value">{{option.text}}</option>
-          </select>
+            <option v-for="(option,index) in buyType" :value="option.text" :key=index>{{option.text}}</option>
+          </select>{{buyTypeSelect}}
         </li>
         <li>
           <span class="li-span">产品版本：</span>
-          <v-choose-more :typeData="useType"></v-choose-more>
+          <v-choose-more :typeData="useType" @on-change="selectParams('buyVersions',$event)"></v-choose-more>{{buyVersions}}
         </li>
         <li>
           <span class="li-span">有效时间：</span>
-          <v-choose :time="rangeTime" @on-change="chooseTime"></v-choose>
+          <v-choose :time="rangeTime" @on-change="selectParams('buyActiveTime',$event)"></v-choose>{{buyActiveTime}}
         </li>
-        <li><span class="li-span">总价：</span><span>500元</span></li>
+        <li><span class="li-span">总价：</span><span>{{price}}元</span></li>
         <li><span class="li-span"></span>
           <a class="buy-btn"> 立即购买</a>
         </li>
@@ -55,12 +55,17 @@
       components: {vCounter,vChoose,vChooseMore},
       data() {
         return {
+          buyNum:1,
+          buyTypeSelect: '入门版',
+          buyVersions:['客户版'],
+          buyActiveTime:"半年",
+          price:0,
           buyType: [
             {text: '入门版', value: 0},
             {text: '中级版', value: 1},
             {text: '高级版', value: 2}
           ],
-          buyTypeSelect: '',
+
           rangeTime:[
             {text:'半年',val:0},
             {text:'1年',val:1},
@@ -75,18 +80,45 @@
         }
       },
       computed: {
-        selects() {
-          // console.log(11111, this.buyTypeSelect);
-          return this.buyTypeSelect
-        }
+        // selects() {
+        //   // console.log(11111, this.buyTypeSelect);
+        //   return this.buyTypeSelect
+        // }
       },
       methods: {
+        selectParams(attr,val){
+          this[attr]=val;
+          this.getPrice();
+        },
+        getPrice(){
+          let par={
+            aa:this.buyNum,
+            bb:this.buyTypeSelect,
+            cc:this.buyVersions,
+            dd:this.buyActiveTime
+          };
+          console.log('par',par);
+          // this.$http.post('/api/getPrice',par).then((res)=>{
+          //   console.log('res',res);
+          // });
+
+          this.$http.get('/api/getPrice')
+          .then((res) => {
+            console.log('res',res);
+          },(err) => {
+            console.log(err);
+
+          })
+
+        },
+        shopNum(num){
+          this.buyVersions = num;
+        },
         select() {
-          // console.log(222, this.buyTypeSelect);
-          console.log(this.selects);
+          // console.log('产品类型', this.buyTypeSelect);
         },
         chooseTime(val){
-          console.log(1122,val);
+          this.buyActiveTime = val;
         }
       },
       mounted(){
@@ -95,6 +127,4 @@
     }
 </script>
 
-<style scoped>
 
-</style>

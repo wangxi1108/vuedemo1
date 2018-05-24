@@ -14,7 +14,7 @@
       <div class="slide-bar"></div>
         <ul class="pages-ul">
           <li @click="goTo(prevIndex)">&lt;</li>
-          <li v-for="(item,index) in slides" @click="goTo(index)">
+          <li v-for="(item,index) in slides" @click="goTo(index)" :key="index">
             <!--<a href="">{{index +1}}</a>-->
             <span :class="{liang:index == nowIndex}">{{index +1}}</span>
           </li>
