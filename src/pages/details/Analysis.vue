@@ -90,6 +90,8 @@
           this[attr]=val;
           this.getPrice();
         },
+
+        //获取价格数据没有成功~~~~~~~~~~~~~~~~~~~~~~~~~~？？？？？
         getPrice(){
           let par={
             aa:this.buyNum,
